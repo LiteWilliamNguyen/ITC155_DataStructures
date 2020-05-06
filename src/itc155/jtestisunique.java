@@ -1,5 +1,6 @@
 package itc155;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +10,6 @@ import org.junit.jupiter.api.Test;
 
 class jtestisunique {
 	
-	isUnique test = new isUnique();
-	
 	@Test
 	public void trueCase() {
 		Map<String,String> tcase = new HashMap<String,String>();
@@ -18,9 +17,10 @@ class jtestisunique {
 		tcase.put("Jessica","Miller");
 		tcase.put("Amanda","camp");
 		tcase.put("Hal","Perkins");
-//		
-//		assertEquals(tcase.isUnique());
-
+		
+//		boolean result = isUnique(tcase);
+//		assertTrue("True", result);
+        
 	}
 	
 	@Test
