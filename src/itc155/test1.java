@@ -10,8 +10,12 @@
 package itc155;
 
 public class test1 {
-	public static void writeNums(int n) {		
-		if(n == 1) {
+	public static void writeNums(int n) {	
+		if (n <= 0){
+	        throw new IllegalArgumentException();
+		}  
+		
+		else if(n == 1) {
 			System.out.print("1");
 		} else {
 			writeNums(n - 1);
@@ -25,6 +29,5 @@ public class test1 {
 		writeNums(12);
 		System.out.println();
 		writeNums(20);
-		
 	}
 }
