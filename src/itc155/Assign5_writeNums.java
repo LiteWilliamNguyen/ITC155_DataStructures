@@ -9,7 +9,7 @@
 
 package itc155;
 
-public class test1 {
+public class Assign5_writeNums {
 	public static void writeNums(int n) {	
 		if (n <= 0){
 	        throw new IllegalArgumentException();
