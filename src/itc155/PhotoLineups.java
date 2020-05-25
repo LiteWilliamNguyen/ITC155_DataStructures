@@ -12,35 +12,45 @@
 //	Mia Lucas Julia
 
 package itc155;
-
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class PhotoLineups {
 // TODO: Write method to create and output all permutations of the list of names.
+	
 	public static void allPermutations(ArrayList<String> permList, ArrayList<String> nameList) {
-		if (permList.size() == 0) {
-			System.out.println(nameList);
+		int size = nameList.size();
+		if (size == 0) {
+			System.out.println(permList);
+		} else { //recursive case 
+			for (int i = 0; i < size; i++) {
+				  ArrayList<String> list1 = new ArrayList<String>(permList);
+				  list1.add(nameList.get(i));
+	              ArrayList<String> list2 = new ArrayList<String>(nameList);
+	              list2.remove(i);
+	              allPermutations(list1, list2);
+			}	
 		}
 	}
 	
 	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
+		
 		ArrayList<String> nameList = new ArrayList<String>();
 		ArrayList<String> permList = new ArrayList<String>();
 		String name;
 		
-		//get the nameList from scanner 
+		Scanner scnr = new Scanner(System.in);
 		System.out.print("input: ");
-	    double username = scnr.nextInt();
-	    
-		System.out.println("output: " + permList);
+		name = scnr.next();
 		
-		//if -1, stop making a namelist
-		
-	
-	// TODO: Read in a list of names; stop when -1 is read. Then call recursive method.
-		}
+// TODO: Read in a list of names; stop when -1 is read. Then call recursive method. if -1, stop making a namelist		
+			
+			while (!name.equals("-1")) {
+				nameList.add(name);
+				name = scnr.next();
+				}
+				allPermutations(permList, nameList);
+	}
 }
 
 

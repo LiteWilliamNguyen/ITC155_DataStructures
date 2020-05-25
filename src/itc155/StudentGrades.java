@@ -11,7 +11,6 @@ package itc155;
 
 import java.util.Scanner;
 import java.util.HashMap;
-import java.util.Map;
 
 public class StudentGrades {
 
@@ -43,6 +42,5 @@ public static void main (String[] args) {
 	System.out.println(studentName + "'s original grade: " + studentGrades.get(studentName));
 	System.out.println(studentName + "'s new grade : " + studentGrade);
 	
-
 	}
 }

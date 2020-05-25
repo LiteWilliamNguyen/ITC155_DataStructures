@@ -11,57 +11,47 @@
 	
 package itc155;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DescendingOrder {
 // TODO: Write a void method selectionSortDescendTrace() that takes
 	public static void selectionSortDescendTrace(int [] numbers, int numElements) {
-		// an integer array and the number of elements in the array as arguments,
-	
-		// and sorts the array into descending order.
-	
-		
-		int maxInt;
-		for(int i = 0; i < numElements; ++i) {
-			maxInt = i;
-			for(int j=i; j<numElements; ++j) {
-				if(numbers[j] > numbers[maxInt]) {
-					maxInt = j;
-				}
-			}
-			swap(numbers, i, maxInt);
-			for(int j = 0; j < numElements; j++) {
-				System.out.println(numbers[j] + " ");
-			}
-			System.out.println();
-		}
+		int max;
+		// an integer array and the number of elements in the array as arguments, and sorts the array into descending order.
+		for (int i = 0; i < numElements - 1; ++i) {
+	    	 max = i;
+	    	 for (int j = i + 1; j < numElements; ++j) {
+	                if (numbers[j] > numbers[max]) {
+	                	max = j;
+	                }
+	    	 }
+	      	int temp = numbers[i];  
+	      	numbers[i] = numbers[max];
+	      	numbers[max] = temp;
+	        
+	      	for(int j = 0; j < numElements; j++) {
+	      		System.out.print(numbers[j] + " ");
+	      	}
+	      	System.out.println();
+	     }
 	}
-	
-	private static void swap(int[]array, int i, int j) {
-		int temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-	}
-	
 	
 	public static void main(String[] args) {
-		
-		Scanner scnr = new Scanner(System.in);
-	
-		int input, i = 0;
 		int numElements = 0;
 		int [] numbers = new int[10];
-	
-	// TODO: Read in a list of up to 10 positive integers; stop when
-	// -1 is read. Then call selectionSortDescendTrace() method.
 		
-		for(i =0; i < numbers.length; i++) {
+		Scanner scnr = new Scanner(System.in);
+		System.out.print("input: ");		
+	
+// TODO: Read in a list of up to 10 positive integers; stop when -1 is read. Then call selectionSortDescendTrace() method.
+		for (int i = 0; i< numbers.length; i++ ) {
 			numbers[i] = scnr.nextInt();
 			if(numbers[i] == -1) {
 				break;
 			}
 			++numElements;
 		}
-		selectionSortDescendTrace(numbers, numElements);
+		selectionSortDescendTrace(numbers, numElements);		
 	}
 }

@@ -52,9 +52,9 @@ public class Assign6 {
 	                	max = j;
 	                }
 	    	 }
-	    	 int temp = list[i];  
+	      	 int temp = list[i];  
 	    	 list[i] = list[max];
-	    	 list[max] = temp;
+	    	 list[max] = temp; 
 	     }
 	     return list;
 	}
