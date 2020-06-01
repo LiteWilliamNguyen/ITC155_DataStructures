@@ -25,15 +25,15 @@ public class Assign7_isPalindrome {
 		  System.out.println(isPalindrome(q));  
 		  
 		  //false case 
-		  q.add(3);
-		  q.add(8);
-		  q.add(17);
-		  q.add(9);
-		  q.add(22);
-		  q.add(17);
-		  q.add(8);
-		  q.add(3);
-		  System.out.println(isPalindrome(q));  
+//		  q.add(3);
+//		  q.add(8);
+//		  q.add(17);
+//		  q.add(9);
+//		  q.add(22);
+//		  q.add(17);
+//		  q.add(8);
+//		  q.add(3);
+//		  System.out.println(isPalindrome(q));  
 	}
 
 	
@@ -49,14 +49,14 @@ public class Assign7_isPalindrome {
 			}
 		
 		for(int i=0; i< size; i++){
-			int n1= q.remove();
+			int n1 = q.remove();
 			int n2 = s.pop();
 			if(n1 != n2){
 				palindrome = false;
 			}
 			q.add(n1);
 		}
-	return palindrome;
+		return palindrome;
 	}
 }   
 
