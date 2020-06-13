@@ -9,67 +9,105 @@
 
 package itc155;
 
+
+class IntTreeNode  { 
+    int data; 
+    IntTreeNode left, right;
+}
+
 public class IntTree {
-	private IntTreeNode root; 
-	
-	class IntTreeNode  { 
-	    int data; 
-	    IntTreeNode left, right;
-	    
-	  
-	    public IntTreeNode(int item)  { 
-	        data = item; 
-	        left = null; 
-	        right = null; 
-	    } 
-	} 
-	    
-	public void BinaryTree() {
-		root = null;
+	public IntTreeNode createNode(int n) {
+		IntTreeNode node = new IntTreeNode();
+		node.data = n;
+		node.left = null;
+		node.right = null;
+		return node;
 	}
 	
-	public boolean lookup (int data) {
-	 return (lookup(root, data));
-	}
-	
-	private boolean lookup (IntTreeNode node, int data) {
-		if (node==null) {
-			return false;
+	//add tree data
+	public IntTreeNode insert(IntTreeNode node, int value) {
+		if(node == null) { //create node if node is null
+			return createNode(value);
 		}
-		if (data == node.data) {
-			return true;
+		
+		if (value < node.data) {
+			node.left = insert(node.left, value);
+		} else if (value > node.data){
+			node.right = insert(node.right, value);
 		}
-		else if (data<node.data) {
-			return (lookup(node.left, data));
-		}
-		 else {
-			 return (lookup(node.right, data));
-		 }
+		return node;
 	}
 	
-	public void insert (int data) {
-		root = insert(root, data);
-	}
-	
-	private IntTreeNode insert(IntTreeNode node, int data) {
-		if(node == null) {
-			node = new IntTreeNode(data);
+	//delete tree data
+	public IntTreeNode delete(IntTreeNode node, int value) {
+		if (node == null) {
+			return null;
+		}
+		
+		if (value < node.data) {
+			node.left = delete(node.left, value);
+		} else if (value > node.data){
+			node.right = delete(node.right, value);
 		} else {
-			if (data <= node.data) {
-				node.left = insert (node.left, data);
+			if(node.left == null || node.right == null) {
+				IntTreeNode temp= null;
+				temp = node.left == null ? node.right : node.left; //if node.left is null(true), return node.right
+				
+				if(temp == null) {
+					return null;
+				} else {
+					return temp ;
+				}
 			} else {
-				node.right = insert (node.right, data);
+				IntTreeNode helper = helper(node);
+				node.data = helper.data;
+				node.right = delete(node.right, 4);
+				return node;
 			}
 		}
 		return node;
 	}
 	
 	
-	public int countEmpty() {
-		return countEmpty(root);
+	public IntTreeNode helper(IntTreeNode node) {
+		if (node == null) {
+			return null;
+		}
+		
+		IntTreeNode temp = node.right;
+		
+		while(temp.left != null) {
+			temp = temp.left;
+		}
+		
+		return temp;
 	}
+	
+	//check if the value exists   //	System.out.println(tree.isPresent(root, 5));
+	public boolean isPresent(IntTreeNode node, int value) {
+		if(node == null) {
+			return false;
+		}
+		
+		boolean isPresent = false;
+		
+		while (node != null) {
+			if(value < node.data) {
+				node = node.left;
+			} else if (value > node.data) {
+				node = node.right;
+			} else {
+				isPresent = true;
+				break;
+			}
+		}
+		return isPresent;
+	}
+	
+	
+//Code here
 
-	private static int countEmpty(IntTreeNode node){
+	public static int countEmpty(IntTreeNode node){
 		if(node == null) {
 			return 1;
 		}
@@ -78,17 +116,18 @@ public class IntTree {
 	
 	public static void main(String args[]) {
 		
-			IntTreeNode tree = new IntTreeNode(10); 
-			tree.root = new IntTreeNode(2); 
-			tree.root.left = new IntTreeNode(7); 
-			tree.root.right = new IntTreeNode(5); 
-			tree.root.left.right = new IntTreeNode(6); 
-			tree.root.left.right.left = new IntTreeNode(1); 
-			tree.root.left.right.right = new IntTreeNode(11); 
-			tree.root.right.right = new IntTreeNode(9); 
-			tree.root.right.right.left = new IntTreeNode(4); 
-	  
-			countEmpty(tree);
+			IntTree tree = new IntTree(); 
+			IntTreeNode root = null;
+			
+			root = tree.insert(root, 2); 
+			root = tree.insert(root, 1); 
+			root = tree.insert(root, 5); 
+			root = tree.insert(root, 10);
+			root = tree.insert(root, 4); 
+			root = tree.insert(root, 8);
+			 
+			System.out.println("Number of empty branch is " + countEmpty(root));
+
 	    }
 	}
 	
