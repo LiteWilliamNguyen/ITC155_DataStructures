@@ -5,26 +5,24 @@
 
 package itc155;
 
-import java.util.LinkedList;
-
-class Node1 {
+class ListNode {
 	int data;
-	Node next;  
+	ListNode next;  
 }
 
-class Final2 {
-	Node head;
+public class Final2 {
+	ListNode head;
 	 
 	 //add data
 	 public void insert(int data) {
-		 Node node = new Node();
+		 ListNode node = new ListNode();
 		 node.data = data;
 		 node.next = null;
 		 
 		 if(head == null) {
 			 head = node;
 		 } else {
-			 Node n = head;
+			 ListNode n = head;
 			 while(n.next != null) {
 				 n = n.next;
 			 }
@@ -34,7 +32,7 @@ class Final2 {
 	 
 	 //insert data at front 
 	 public void insertAtStart(int data) {
-		 Node node = new Node();
+		 ListNode node = new ListNode();
 		 node.data = data;
 		 node.next = null;
 		 node.next = head;
@@ -44,14 +42,14 @@ class Final2 {
 	 
 	 //insert data at specific index
 	 public void insertAt (int index, int data) {
-		 Node node = new Node();
+		 ListNode node = new ListNode();
 		 node.data = data;
 		 node.next = null; 
 		 
 		 if(index == 0) { //when insert at 0 index
 			 insertAtStart(data);
 		 } else {
-			 Node n = head;
+			 ListNode n = head;
 			 for (int i =0; i <index-1; i++) {
 				 n = n.next;
 			 }
@@ -65,8 +63,8 @@ class Final2 {
 		 if (index == 0) {
 			 head = head.next; 
 		 } else {
-			 Node n = head;
-			 Node n1 = null;
+			 ListNode n = head;
+			 ListNode n1 = null;
 			 for (int i =0; i <index-1; i++) {
 				 n = n.next;
 			 }
@@ -76,10 +74,9 @@ class Final2 {
 		 }
 	 }
 	 
-	 
 	 //print
 	 public void show() {
-		 Node node = head;
+		 ListNode node = head;
 		 while (node.next != null) {
 			 System.out.println(node.data);
 			 node = node.next;
@@ -87,9 +84,29 @@ class Final2 {
 		 System.out.println(node.data); //print last node;
 	 }
 	 
+	//YOUR CODE GOES HERE
+	 public boolean hasTwoConsequitive() {
+		 if(head == null) {
+			 return false;
+		 }
+		 ListNode prev = head;
+		 ListNode current = prev.next;
+
+		 while(current != null) {
+			 if(prev.data + 1 == current.data) {
+				 return true;
+			 }
+			 prev = current;
+			 current = prev.next;
+		 }
+		 return false;
+	 }
+	 
 	 
 	public static void main(String[] args) {
-		LinkedList<Integer> list1 = new LinkedList<Integer>();
+		
+		//true case 
+		Final2 list1 = new Final2();
 		
 		list1.insert(2);
 		list1.insert(3);
@@ -97,8 +114,18 @@ class Final2 {
 		list1.insert(9);
 		list1.insert(11);
 		
-		list1.show();
+		System.out.println(list1.hasTwoConsequitive());
 		
+		//false case 
+		Final2 list2 = new Final2();
+		
+		list2.insert(2);
+		list2.insert(4);
+		list2.insert(6);
+		list2.insert(8);
+		list2.insert(11);
+		
+		System.out.println(list2.hasTwoConsequitive());
 	}
 
 }

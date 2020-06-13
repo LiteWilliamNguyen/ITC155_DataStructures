@@ -7,14 +7,12 @@
 
 package itc155;
 
-import java.util.*;
-
 class Node {
 	int data;
 	Node next; 
 }
 
-class LinkedIntList_isSorted {
+public class LinkedIntList_isSorted {
 	Node head;
 	 //add data
 	 public void insert(int data) {
