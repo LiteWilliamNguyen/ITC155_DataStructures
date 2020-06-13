@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Assign7_isPalindrome {
 	public static void main(String[] args) {
-		  Queue<Integer> q = new LinkedList<Integer>();
+		  Queue<Integer> q = new LinkedList();
 		  //True case 
 		  q.add(3);
 		  q.add(8);

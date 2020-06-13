@@ -22,8 +22,5 @@ class Final1Test {
 		num2.add(4);
 		 
 		Assertions.assertEquals(true, Final1.equals(num1,num2));
-
 	}
-
-
 }

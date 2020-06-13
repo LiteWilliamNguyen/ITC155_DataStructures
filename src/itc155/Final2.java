@@ -30,7 +30,7 @@ public class Final2 {
 		 }
 	 }
 	 
-	 //insert data at front 
+	 //insert data at first index 
 	 public void insertAtStart(int data) {
 		 ListNode node = new ListNode();
 		 node.data = data;
